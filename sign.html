@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به GunCraft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://s8.uupload.ir/files/2024-08-15_10.56.44_nugj.png');
+            /* تصویر پس‌زمینه جدید */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* ثابت نگه‌داشتن تصویر پس‌زمینه هنگام پیمایش */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            ش align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .login-container {
+            background-color: rgba(51, 51, 51, 0.8);
+            /* پس‌زمینه نیمه شفاف */
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .login-container h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        .login-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .login-container input[type="submit"] {
+            background-color: aqua;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .login-container input[type="submit"]:hover {
+            background-color: #7fffd4;
+        }
+        
+        .login-container .forgot-password {
+            margin-top: 10px;
+            color: #ffeb3b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>ورود به GunCraft</h1>
+        <form action="" method="post">
+            <input type="text" name="username" placeholder="نام کاربری" required>
+            <input type="password" name="password" placeholder="رمز عبور" required>
+            <input type="submit" value="ورود">
+            <div class="forgot-password">
+                <a href="#">فراموشی رمز عبور؟</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
