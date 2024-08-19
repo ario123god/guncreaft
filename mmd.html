@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست قیمت GunCraft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .price-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+        
+        .price-item {
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .price-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .price-item h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .price-item .price {
+            margin-top: 10px;
+            font-size: 32px;
+            color: #ffeb3b;
+        }
+        
+        .price-item .currency {
+            font-size: 18px;
+            color: #ffeb3b;
+        }
+        
+        .buy-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: aqua;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .buy-button:hover {
+            background-color: #7fffd4;
+        }
+        
+        .thank-you-message,
+        .fail-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 10;
+        }
+        
+        .thank-you-message.show,
+        .fail-message.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        /* Mobile Styles */
+        
+        @media (max-width: 768px) {
+            .price-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .price-item {
+                padding: 15px;
+                min-height: auto;
+            }
+            .price-item h2 {
+                font-size: 20px;
+            }
+            .price-item .price {
+                font-size: 28px;
+            }
+            .buy-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        /* Tablet Styles */
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .price-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .price-item {
+                padding: 18px;
+            }
+            .price-item h2 {
+                font-size: 22px;
+            }
+            .price-item .price {
+                font-size: 30px;
+            }
+            .buy-button {
+                font-size: 15px;
+                padding: 9px 18px;
+            }
+        }
+        /* Desktop Styles */
+        
+        @media (min-width: 1025px) {
+            .price-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            .price-item {
+                padding: 20px;
+            }
+            .price-item h2 {
+                font-size: 24px;
+            }
+            .price-item .price {
+                font-size: 32px;
+            }
+            .buy-button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="price-container">
+        <div class="price-item">
+            <h2>اسپانسر</h2>
+            <div class="price">180,000 <span class="currency">تومان</span></div>
+            <button class="buy-button" onclick="startPayment('اسپانسر', 180000)">خرید</button>
+        </div>
+        <div class="price-item">
+            <h2>اسنایپر</h2>
+            <div class="price">80,000 <span class="currency">تومان</span></div>
+            <button class="buy-button" onclick="startPayment('اسنایپر', 80000)">خرید</button>
+        </div>
+        <div class="price-item">
+            <h2>گانکرفت</h2>
+            <div class="price">60,000 <span class="currency">تومان</span></div>
+            <button class="buy-button" onclick="startPayment('گانکرفت', 60000)">خرید</button>
+        </div>
+        <div class="price-item">
+            <h2>وی آی پی</h2>
+            <div class="price">40,000 <span class="currency">تومان</span></div>
+            <button class="buy-button" onclick="startPayment('وی آی پی', 40000)">خرید</button>
+        </div>
+        <div class="price-item">
+            <h2>الیت</h2>
+            <div class="price">30,000 <span class="currency">تومان</span></div>
+            <button class="buy-button" onclick="startPayment('الیت', 30000)">خرید</button>
+        </div>
+    </div>
+
+    <div class="thank-you-message" id="thankYouMessage">خرید موفق بود :)</div>
+    <div class="fail-message" id="failMessage">خرید موفق نبود :(</div>
+
+    <script>
+        function startPayment(itemName, itemPrice) {
+            fetch('https://api.zarinpal.com/pg/v4/payment/request.json', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        merchant_id: 'YOUR_MERCHANT_ID',
+                        amount: itemPrice,
+                        description: `خرید ${itemName}`,
+                        callback_url: 'http://yourdomain.com/verify-payment'
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.authority) {
+                        window.location.href = `https://www.zarinpal.com/pg/StartPay/${data.data.authority}`;
+                    } else {
+                        alert('خطایی در ایجاد پرداخت رخ داده است.');
+                    }
+                })
+                .catch(error => console.error('خطا:', error));
+        }
+
+        function checkPaymentStatus() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+
+            if (status === 'success') {
+                document.getElementById('thankYouMessage').classList.add('show');
+            } else {
+                document.getElementById('failMessage').classList.add('show');
+            }
+        }
+
+        window.addEventListener('load', checkPaymentStatus);
+    </script>
+</body>
+
+</html>
